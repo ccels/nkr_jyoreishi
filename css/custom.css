@@ -32,22 +32,19 @@ https://www.evoworx.co.jp/blog/mouse-stoker-gsap/
 からお借りしました。ありがとうございました！ */
 body {
   position: relative;
-  //cursor: none; もともとあるカーソルは見えなくなるようにする
 }
  
 .cursor,
 .follower {
-  //border-radius: 50%;
   position: absolute; //bodyの一番左上になるように配置する
   top: 0;
-  left: 0; 
-  //cursor: none; //もともとあるカーソルは見えなくなるようにする
+  left: 0;
   posinter-events: none; //他の要素がクリックできなくならないように
 }
  
 .cursor {
   width: 2px;
-  //height: 8px;
+  height: 2px;
   //background-color: #000;
   z-index: 10001; //どの要素よりも一番上になるようにする
 }
@@ -55,6 +52,5 @@ body {
 .follower {
   width: 30px;
   height: 30px;
-  //background-color: #fdfe00;
   z-index: 10000; //カーソルの次に上になるようにする
 }
