@@ -1,0 +1,60 @@
+
+/* 文字を虹色にアニメーションするCSS。コードは
+https://neos21.hatenablog.com/entry/2018/04/13/080000
+からお借りしました。ありがとうございました！ */
+.text-rainbow {
+  /* フォントサイズなどを任意で指定する */
+  font: bold  / 1 Verdana, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  
+  /* 背景グラデーションを指定・幅を 200% にしておく */
+  background: linear-gradient(to right, #f00 0%, #f80 14.28%, #dd0 28.56%, #0d0 42.85%, #0dd 57.14%, #00f 71.42%, #e0e 85.71%, #f00 100%) 0% center / 200% auto;
+  
+  /* 背景画像を文字でマスクする */
+          background-clip: text;
+  -webkit-background-clip: text;
+  
+  /* 文字色を透明にできればよく color: transparent でも color: rgba(0, 0, 0, 0) でも可 */
+          text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  
+  /* アニメーション指定 */
+  animation: example 4s linear infinite;
+}
+
+/* 背景の横位置をズラす */
+@keyframes example {
+  to { background-position-x: 200%; }
+}
+
+/* ついてくるマウスカーソル。コードは
+https://www.evoworx.co.jp/blog/mouse-stoker-gsap/
+からお借りしました。ありがとうございました！ */
+body {
+  position: relative;
+  //cursor: none; もともとあるカーソルは見えなくなるようにする
+}
+ 
+.cursor,
+.follower {
+  //border-radius: 50%;
+  position: absolute; //bodyの一番左上になるように配置する
+  top: 0;
+  left: 0; 
+  //cursor: none; //もともとあるカーソルは見えなくなるようにする
+  posinter-events: none; //他の要素がクリックできなくならないように
+}
+ 
+.cursor {
+  width: 2px;
+  //height: 8px;
+  //background-color: #000;
+  z-index: 10001; //どの要素よりも一番上になるようにする
+}
+ 
+.follower {
+  width: 30px;
+  height: 30px;
+  //background-color: #fdfe00;
+  z-index: 10000; //カーソルの次に上になるようにする
+}
