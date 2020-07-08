@@ -27,32 +27,6 @@ https://neos21.hatenablog.com/entry/2018/04/13/080000
   to { background-position-x: 200%; }
 }
 
-/* ついてくるマウスカーソル。コードは
-https://www.evoworx.co.jp/blog/mouse-stoker-gsap/
-からお借りしました。ありがとうございました！ */
-body {
-  position: relative;
-}
- 
-.cursor,
-.follower {
-  position: absolute; //bodyの一番左上になるように配置する
-  top: 0;
-  left: 0;
-  posinter-events: none; //他の要素がクリックできなくならないように
-}
- 
-.cursor {
-  width: 2px;
-  height: 2px;
-  z-index: 10001; //どの要素よりも一番上になるようにする
-}
- 
-.follower {
-  width: 30px;
-  height: 30px;
-  z-index: 10000; //カーソルの次に上になるようにする
-}
 /* blink 「ブリンク・点滅」 のCSS生成
 https://webparts.cman.jp/string/blink/ */
 .blink {

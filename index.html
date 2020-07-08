@@ -16,15 +16,13 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="css/output.css"/>
 <link rel="stylesheet" type="text/css" href="css/custom.css"/>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <title>オンライン除霊師・にっかり青江のページ</title>
 </head>
 <body background="image/nikkariaoe.jpg ">
-<!--<div class="cursor"></div>
-<div class="follower"><img src="image/blue_ghost.gif" alt=""></div>-->
 <div id="container" class="max-w-screen-lg w-full h-full md:bg-white mx-auto">
     <div id="header" class="w-full text-left text-white bg-indigo-700 px-8 py-2">
             <p>💩 あなたのお悩み✩スッキリ解決！💩</p>
@@ -87,59 +85,52 @@
         <p class="pt-2">© 2020 sabosabosaboten</p>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
 <script>
-var
-cursor = $(".cursor"),
-follower = $(".follower"),
-cWidth = 2, //カーソルの大きさ
-fWidth = 30, //フォロワーの大きさ
-delay = 5, //数字を大きくするとフォロワーがより遅れて来る
-mouseX = 0, //マウスのX座標
-mouseY = 0, //マウスのY座標
-posX = 0, //フォロワーのX座標
-posY = 0; //フォロワーのX座標
+// ------------------------------------------------------------
+// マウス画像設定＆イベント追加
+// ------------------------------------------------------------
+var wmouse;
+function MouseImage(){
+	// イメージオブジェクトを作成
+	wmouse = new Image();
+	// イメージオブジェクトのスタイルを設定
+	var style = wmouse.style;
+	// fixed（画面左上を基点、スクロール無視）を設定
+	style.position = "fixed";
+	// 画像をセット
+	wmouse.src = "image/blue_ghost.gif";
 
-//カーソルの遅延アニメーション
-//ほんの少ーーーしだけ遅延させる 0.001秒
-TweenMax.to({}, .001, {
-  repeat: -1,
-  onRepeat: function() {
-    posX += (mouseX - posX) / delay;
-    posY += (mouseY - posY) / delay;
-    
-    TweenMax.set(follower, {
-        css: {    
-          left: posX - (fWidth / 2),
-          top: posY - (fWidth / 2)
-        }
-    });
-    
-    TweenMax.set(cursor, {
-        css: {    
-          left: mouseX - (cWidth / 2),
-          top: mouseY - (cWidth / 2)
-        }
-    });
-  }
-});
-
-//マウス座標を取得
-$(document).on("mousemove", function(e) {
-    mouseX = e.pageX;
-    mouseY = e.pageY;
-});
-
-$("a").on({
-  "mouseenter": function() {
-    cursor.addClass("is-active");
-    follower.addClass("is-active");
-  },
-  "mouseleave": function() {
-    cursor.removeClass("is-active");
-    follower.removeClass("is-active");
-  }
-});
+	document.body.appendChild(wmouse);
+	// イベント追加
+	if(document.addEventListener){
+		document.addEventListener("mousemove" , MouseMove);
+	}else if(document.attachEvent){
+		document.attachEvent("onmousemove" , MouseMove);
+	}
+}
+// ------------------------------------------------------------
+// マウスの位置取得＆設定
+// ------------------------------------------------------------
+function MouseMove(e){
+	wmouse.style.left = (e.clientX - 35) + "px";
+	wmouse.style.top  = (e.clientY - 50) + "px";
+}
+// ------------------------------------------------------------
+// イベント削除＆画像削除
+// ------------------------------------------------------------
+function MouseRelease(){
+	if(!wmouse)	return;
+	if(document.removeEventListener){
+		document.removeEventListener("mousemove" , MouseMove);
+	}else if(document.detachEvent){
+		document.detachEvent("onmousemove" , MouseMove);
+	}
+	if(wmouse.parentNode){
+		wmouse.parentNode.removeChild(wmouse);
+	}
+	wmouse = null;
+}
+MouseImage()
 </script>
 </body>
 </html>
