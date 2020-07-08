@@ -54,7 +54,7 @@ body {
   z-index: 10000; //カーソルの次に上になるようにする
 }
 /* その他のカスタムCSS */
-a:hover   { color:blue;}
+//a:hover   { color:blue;}
 li {
     padding-bottom: 0.5rem;
 }
