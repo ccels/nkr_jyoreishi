@@ -53,6 +53,17 @@ body {
   height: 30px;
   z-index: 10000; //カーソルの次に上になるようにする
 }
+/* blink 「ブリンク・点滅」 のCSS生成
+https://webparts.cman.jp/string/blink/ */
+.blink {
+  animation: blinkAnime 1s infinite alternate;
+}
+@keyframes blinkAnime{
+   0% { color: #000000 }
+ 100% { color: #ff66ff }
+}
+
+
 /* その他のカスタムCSS */
 //a:hover   { color:blue;}
 li {
